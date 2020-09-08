@@ -9,7 +9,6 @@ object MealClient {
     fun getInstance(): Retrofit {
         if (instance == null) {
             instance = Retrofit.Builder()
-                //급식,학사 일정 base url
                 .baseUrl("http://kyungwon-server.kro.kr:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
