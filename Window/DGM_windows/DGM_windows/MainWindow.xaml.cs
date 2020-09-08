@@ -30,20 +30,20 @@ namespace DGM_windows
 
             string[] getSchoolWeather = GetSchoolWeather.getWeather();
 
-            api_test.Text = getSchoolWeather[0];
-            api_test_Copy.Text = getSchoolWeather[1];
-            api_test_Copy1.Text = getSchoolWeather[2];
-            api_test_Copy2.Text = getSchoolWeather[3];
+            api_test.Content = getSchoolWeather[0];
+            api_test_Copy.Content = getSchoolWeather[1];
+            api_test_Copy1.Content = getSchoolWeather[2];
+            api_test_Copy2.Content = getSchoolWeather[3];
 
             string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
 
-            meal1.Text = getSchoolMeals[0];
-            meal2.Text = getSchoolMeals[1];
-            meal3.Text = getSchoolMeals[2];
+            meal1.Content = getSchoolMeals[0];
+            meal2.Content = getSchoolMeals[1];
+            meal3.Content = getSchoolMeals[2];
 
             string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
-            sche.Text = getSchoolSchedule[0];
+            sche.Content = getSchoolSchedule[0];
 
 
 
