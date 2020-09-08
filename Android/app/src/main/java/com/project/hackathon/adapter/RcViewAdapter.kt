@@ -6,28 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.project.hackathon.MainActivity
 import com.project.hackathon.R
 import com.project.hackathon.data.Check
 import com.project.hackathon.room.DataBase
 
 class RcViewAdapter : RecyclerView.Adapter<RcViewAdapter.Holder>(){
-    lateinit var memoList : ArrayList<Check>
+    lateinit var checkList : ArrayList<Check>
     var checkDB : DataBase? = null
 
     fun setList(list : ArrayList<Check>){
-        if(::memoList.isInitialized) return
-        memoList = list
+        if(::checkList.isInitialized) return
+        checkList = list
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val des = itemView.findViewById<TextView>(R.id.description)
-        val delete = itemView.findViewById<TextView>(R.id.delete)
         fun bind(check : Check) {
             des.text = check.description
-
-            delete.setOnClickListener {
-                checkDB?.dao()?.delete(check.id)
-            }
         }
     }
 
@@ -37,11 +33,11 @@ class RcViewAdapter : RecyclerView.Adapter<RcViewAdapter.Holder>(){
     }
 
     override fun getItemCount(): Int {
-        return memoList.size
+        return checkList.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(memoList[position])
+        holder.bind(checkList[position])
     }
 
 }

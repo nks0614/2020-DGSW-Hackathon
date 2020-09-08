@@ -2,7 +2,9 @@ package com.project.hackathon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.hackathon.adapter.RcViewAdapter
 import com.project.hackathon.data.Check
 import com.project.hackathon.data.Meal
@@ -43,8 +45,17 @@ class MainActivity : AppCompatActivity() {
         checkList.clear()
         checkList.addAll(checkDB?.dao()?.getAll()!!)
         rcViewAdapter.notifyDataSetChanged()
+        main_rcView.layoutManager = LinearLayoutManager(this)
+        main_rcView.adapter = rcViewAdapter
 
 
+        mealRetrofit = MealClient.getInstance()
+        getMeal()
+
+        clickListener()
+    }
+
+    fun clickListener(){
         main_addItem.setOnClickListener {
             simIntentNoFinish(AddActivity::class.java)
         }
@@ -62,11 +73,14 @@ class MainActivity : AppCompatActivity() {
         mealAPI.getMeal(SCHOOL_ID, OFFICE_CODE, getTime)
             .enqueue(object : Callback<Response<Meal>>{
                 override fun onResponse(call: Call<Response<Meal>>, response: retrofit2.Response<Response<Meal>>) {
-                    breakfast_menu.text = response.body()?.data?.meals?.get(0)
+                    breakfast_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(0))
+                    lunch_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(1))
+                    dinner_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(2))
+                    Log.d("Logg",response.body()?.data?.meals?.get(1))
                 }
 
                 override fun onFailure(call: Call<Response<Meal>>, t: Throwable) {
-
+                    Log.d("Logg", t.message)
                 }
             })
     }
