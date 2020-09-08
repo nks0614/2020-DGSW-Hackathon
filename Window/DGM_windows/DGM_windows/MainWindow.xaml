@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox FontSize="10" Height="20" Name="api_test" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox FontSize="10" Height="20" Name="api_test_Copy" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,225,347,178"/>
+        <TextBox FontSize="10" Height="20" Name="api_test_Copy1" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,253,347,150"/>
+        <TextBox FontSize="10" Height="20" Name="api_test_Copy2" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,283,347,120"/>
     </Grid>
 </Window>
