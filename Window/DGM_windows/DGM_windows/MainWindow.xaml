@@ -11,5 +11,9 @@
         <TextBox FontSize="10" Height="20" Name="api_test_Copy" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,225,347,178"/>
         <TextBox FontSize="10" Height="20" Name="api_test_Copy1" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,253,347,150"/>
         <TextBox FontSize="10" Height="20" Name="api_test_Copy2" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,283,347,120"/>
+        <TextBox FontSize="10" Height="20" x:Name="meal1" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,200,160,201"/>
+        <TextBox FontSize="10" Height="20" x:Name="meal2" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,224,160,177"/>
+        <TextBox FontSize="10" Height="20" x:Name="meal3" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,252,160,149"/>
+        <TextBox FontSize="10" Height="20" x:Name="meal4" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,282,160,119"/>
     </Grid>
 </Window>

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 
+
 namespace DGM_windows
 {
     /// <summary>
@@ -29,6 +30,7 @@ namespace DGM_windows
         {
             InitializeComponent();
             getWeather();
+            SchoolMeals.schoolMeals();
         }
 
         void getWeather()
@@ -44,7 +46,7 @@ namespace DGM_windows
             WeatherInfo.Root outPut = result;
 
             api_test.Text = string.Format("{0}", outPut.name);
-                api_test_Copy.Text = string.Format("{0}", outPut.sys.country);
+            api_test_Copy.Text = string.Format("{0}", outPut.sys.country);
             api_test_Copy1.Text = string.Format("{0} \u00B0" + "C", outPut.main.temp);
             api_test_Copy2.Text = string.Format("{0}", outPut.weather[0].main);
 
@@ -52,9 +54,13 @@ namespace DGM_windows
 
             json = web.DownloadString(url);
 
-            url = string.Format("http://kyungwon-server.kro.kr:8080/search?school_name=대구소프트");
+            
+
+            url = string.Format("http://kyungwon-server.kro.kr:8080/schedule?school_id=7240393&office_code=D10&date=20200912");
 
             json = web.DownloadString(url);
         }
+
+        
     }
 }
