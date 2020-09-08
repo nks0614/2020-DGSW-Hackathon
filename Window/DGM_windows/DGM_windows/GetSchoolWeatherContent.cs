@@ -40,11 +40,11 @@ namespace DGM_windows
             }
             else if (icon == "13d" || icon == "13n")
             {
-                return "눈이 오네요";
+                return "눈이 와요! 우와아";
             }
             else if (icon == "50d" || icon == "50n")
             {
-                return "안개가 꼈네요 마치 당신의 미래같아요";
+                return "조금 습하네요";
             }
             else
             {
