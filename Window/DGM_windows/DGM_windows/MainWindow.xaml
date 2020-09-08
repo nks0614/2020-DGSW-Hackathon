@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DGM_windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox FontSize="15" Height="50" Name="api_test" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,84,438,287"/>
-        <TextBox FontSize="15" Height="50" Name="api_test_Copy" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,150,438,221"/>
-        <TextBox FontSize="15" Height="50" Name="api_test_Copy1" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,215,438,156"/>
-        <TextBox FontSize="15" Height="50" Name="api_test_Copy2" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,284,438,87"/>
-        <TextBox FontSize="15" Height="119" x:Name="meal1" Width="209" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="524,10,61,292"/>
-        <TextBox FontSize="15" Height="123" x:Name="meal2" Width="209" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="524,134,61,164"/>
-        <TextBox FontSize="15" Height="144" x:Name="meal3" Width="209" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="524,262,61,15" RenderTransformOrigin="0.48,-0.85"/>
-        <TextBox FontSize="15" Height="50" x:Name="sche" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,10,438,361"/>
+        Title="MainWindow" Height="562" Width="1000"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"  ShowInTaskbar="False" >
+    <Grid Background="Black" Height="562" Width="1000">
+        <Label Content="DGSW MANAGER"/>
+
+        <Label Foreground="White" FontSize="15" Height="50" Name="api_test" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,98,391,302"/>
+        <Label Foreground="White" FontSize="15" Height="50" Name="api_test_Copy" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,164,391,236"/>
+        <Label Foreground="White" FontSize="15" Height="50" Name="api_test_Copy1" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,230,391,170"/>
+        <Label Foreground="White" FontSize="15" Height="50" Name="api_test_Copy2" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,298,391,102"/>
+        <Label Foreground="White" FontSize="15" Height="120" x:Name="meal1" Width="209" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="477,24,14,306"/>
+        <Label Foreground="White" FontSize="15" Height="124" x:Name="meal2" Width="209" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="477,148,14,178"/>
+        <Label Foreground="White" FontSize="15" Height="144" x:Name="meal3" Width="209" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="477,276,14,30" RenderTransformOrigin="0.48,-0.85"/>
+        <Label Foreground="White" FontSize="15" Height="50" x:Name="sche" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,24,391,376"/>
     </Grid>
 </Window>
