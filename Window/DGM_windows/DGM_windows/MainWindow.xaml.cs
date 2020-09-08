@@ -28,6 +28,7 @@ namespace DGM_windows
         {
             InitializeComponent();
 
+
             TodayDate.Content = DateTime.Now.Date.Year.ToString() + "년 " + DateTime.Now.Date.Month.ToString("00") + "월 " + DateTime.Now.Date.Day.ToString("00") + "일";
 
             string[] getSchoolWeather = GetSchoolWeather.getWeather();

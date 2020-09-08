@@ -10,8 +10,9 @@
         AllowsTransparency="True"
         Background="Transparent"
         Topmost="True"  ShowInTaskbar="False"
-        VerticalAlignment="Bottom" HorizontalAlignment="Left">
-    <Grid Background="White" Height="562" Width="1000">
+        WindowStartupLocation="Manual">
+    <Grid Height="562" Width="1000">
+        <Rectangle Fill="White" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
         <Label Content="DGSW MANAGER" FontSize="35" Foreground="#707070" FontWeight="Bold" Margin="38 7 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="대소고 생활이 당신의 삶에서 가취있기를" FontSize="18" Foreground="#707070" FontWeight="Bold" Margin="38 56 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
