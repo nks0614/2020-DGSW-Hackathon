@@ -113,8 +113,10 @@ class MainActivity : AppCompatActivity() {
             main_weather_comment.text = "좀 더 격렬하게 실내점호! 실내점호!"
         } else if (icon == "13d" || icon == "13n") {
             main_weather_img.setImageResource(R.drawable.snow)
+            main_weather_comment.text = "눈이 와요! 우와아"
         } else if (icon == "50d" || icon == "50n") {
             main_weather_img.setImageResource(R.drawable.mist)
+            main_weather_comment.text = "조금 습하네요"
         }
     }
 
