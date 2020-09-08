@@ -3,21 +3,21 @@ package com.project.hackathon.data
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class TotalWeather(
+data class TotalWeather(
     var main : Main? = null,
     @SerializedName("weather")
     var weatherList : ArrayList<Weather>? = null
 
 ): Serializable
 
-class Weather(
+data class Weather(
     var description : String? = null,
     var icon : String? = null,
     var id : Int? = null,
     var main : String? = null
 ): Serializable
 
-class Main(
+data class Main(
     var humidity : Int? = null,
     var pressure : Int? = null,
     var temp : Float? = null,

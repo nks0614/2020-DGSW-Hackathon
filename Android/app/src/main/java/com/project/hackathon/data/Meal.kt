@@ -1,14 +1,14 @@
 package com.project.hackathon.data
 
-class Meal(
+data class Meal(
     val meals: ArrayList<String?>
 )
 
-class Schedule(
+data class Schedule(
     val schedules : List<DetailSchedule>
 )
 
-class DetailSchedule(
+data class DetailSchedule(
     val name: String,
     val date: String
 )

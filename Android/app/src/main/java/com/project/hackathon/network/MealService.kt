@@ -1,6 +1,7 @@
 package com.project.hackathon.network
 
 import com.project.hackathon.data.Meal
+import com.project.hackathon.data.Response
 import com.project.hackathon.data.Schedule
 import retrofit2.Call
 import retrofit2.http.GET
@@ -13,13 +14,13 @@ interface MealService {
         @Query("school_id") id : String,
         @Query("office_code") code : String,
         @Query("date") date: String
-    ): Call<Meal>
+    ): Call<Response<Meal>>
 
     @GET("schedule")
     fun getSchedule(
         @Query("school_id") id : String,
         @Query("office_code") code : String,
         @Query("date") date : String
-    ): Call<Schedule>
+    ): Call<Response<Schedule>>
 
 }
