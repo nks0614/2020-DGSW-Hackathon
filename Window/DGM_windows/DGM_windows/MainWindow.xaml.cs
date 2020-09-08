@@ -37,9 +37,9 @@ namespace DGM_windows
 
             string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
 
-            meal1.Content = getSchoolMeals[0];
-            meal2.Content = getSchoolMeals[1];
-            meal3.Content = getSchoolMeals[2];
+            MealBreakfast.Content = getSchoolMeals[0];
+            MealLunch.Content = getSchoolMeals[1];
+            MealDinner.Content = getSchoolMeals[2];
 
             string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
