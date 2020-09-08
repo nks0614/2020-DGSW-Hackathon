@@ -1,9 +1,9 @@
 package com.project.hackathon
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.hackathon.adapter.RcViewAdapter
 import com.project.hackathon.data.*
@@ -92,19 +92,18 @@ class MainActivity : AppCompatActivity() {
                     } else if (icon == "02n") {
                         main_weather_img.setImageResource(R.drawable.night_cloud)
                         main_weather_comment.text = "창문 열고 자면 추울 것 같아요"
-                    }else if(icon == "03d" || icon == "03n" || icon == "04d" || icon == "04n"){
+                    } else if (icon == "03d" || icon == "03n" || icon == "04d" || icon == "04n") {
                         main_weather_img.setImageResource(R.drawable.cloud)
                         main_weather_comment.text = "어두컴컴하니깐 텐션 떨어져요"
                     } else if (icon == "09d" || icon == "09n" || icon == "10n" || icon == "10d") {
                         main_weather_img.setImageResource(R.drawable.rain)
                         main_weather_comment.text = "실내점호! 실내점호! 실내점호!"
-                    }else if(icon == "11d" || icon == "11n"){
+                    } else if (icon == "11d" || icon == "11n") {
                         main_weather_img.setImageResource(R.drawable.thunder)
                         main_weather_comment.text = "좀 더 격렬하게 실내점호! 실내점호!"
-                    }
-                    else if (icon == "13d" || icon == "13n") {
+                    } else if (icon == "13d" || icon == "13n") {
                         main_weather_img.setImageResource(R.drawable.snow)
-                    }else if(icon == "50d" || icon == "50n"){
+                    } else if (icon == "50d" || icon == "50n") {
                         main_weather_img.setImageResource(R.drawable.mist)
                     }
 
@@ -127,9 +126,28 @@ class MainActivity : AppCompatActivity() {
                     call: Call<Response<Meal>>,
                     response: retrofit2.Response<Response<Meal>>
                 ) {
-                    breakfast_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(0))
-                    lunch_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(1))
-                    dinner_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(2))
+
+                    var breakfast = response.body()?.data?.meals?.get(0)
+                    var lunch = response.body()?.data?.meals?.get(1)
+                    var dinner = response.body()?.data?.meals?.get(2)
+
+                    if (breakfast != null) {
+                        breakfast_menu.text = Html.fromHtml(breakfast.replace("[0-9]".toRegex(),"").replace(".",""))
+                    }
+                    else{
+                        breakfast_menu.text = "오늘의 아침은 없습니다."
+                    }
+                    if (lunch != null) {
+                        lunch_menu.text = Html.fromHtml(lunch.replace("[0-9]".toRegex(),"").replace(".",""))
+                    }
+                    else{
+                        lunch_menu.text = "오늘의 점심은 없습니다."
+                    }
+                    if (dinner != null) {
+                        dinner_menu.text = Html.fromHtml(dinner.replace("[0-9]".toRegex(),"").replace(".",""))
+                    }else{
+                        dinner_menu.text = "오늘의 저녁은 없습니다."
+                    }
                 }
 
                 override fun onFailure(call: Call<Response<Meal>>, t: Throwable) {
