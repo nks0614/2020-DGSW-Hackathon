@@ -32,7 +32,7 @@ namespace DGM_windows
             }
             catch
             {
-                return new string[] { "오늘의 스케줄이 없습니다." };
+                return new string[] { "오늘의 일정이 없습니다." };
             }
         }
     }

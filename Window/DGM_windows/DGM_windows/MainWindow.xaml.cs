@@ -28,12 +28,12 @@ namespace DGM_windows
         {
             InitializeComponent();
 
+            TodayDate.Content = DateTime.Now.Date.Year.ToString() + "년 " + DateTime.Now.Date.Month.ToString("00") + "월 " + DateTime.Now.Date.Day.ToString("00") + "일";
+
             string[] getSchoolWeather = GetSchoolWeather.getWeather();
 
-            api_test.Content = getSchoolWeather[0];
-            api_test_Copy.Content = getSchoolWeather[1];
-            api_test_Copy1.Content = getSchoolWeather[2];
-            api_test_Copy2.Content = getSchoolWeather[3];
+            WeatherTemp.Content = getSchoolWeather[0];
+            WeatherContent.Content = getSchoolWeather[1];
 
             string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
 
@@ -43,7 +43,7 @@ namespace DGM_windows
 
             string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
-            sche.Content = getSchoolSchedule[0];
+            ScheduleContent.Text = getSchoolSchedule[0];
 
 
 

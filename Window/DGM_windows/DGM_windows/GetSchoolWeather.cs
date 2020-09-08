@@ -23,8 +23,6 @@ namespace DGM_windows
             WeatherInfo.Root outPut = result;
 
             string[] returnResult = new string[] { 
-                string.Format("{0}", outPut.name), 
-                string.Format("{0}", outPut.sys.country), 
                 string.Format("{0} \u00B0" + "C", outPut.main.temp), 
                 string.Format("{0}", outPut.weather[0].main)
                 };

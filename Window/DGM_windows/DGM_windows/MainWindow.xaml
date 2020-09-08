@@ -9,24 +9,26 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Topmost="True"  ShowInTaskbar="False" >
+        Topmost="True"  ShowInTaskbar="False"
+        VerticalAlignment="Bottom" HorizontalAlignment="Left">
     <Grid Background="White" Height="562" Width="1000">
-        <Label Content="DGSW MANAGER" FontSize="35" Foreground="#707070" FontWeight="Bold" Margin="68 37 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label Content="대소고 생활이 당신의 삶에서 가취있기를" FontSize="18" Foreground="#707070" FontWeight="Bold" Margin="68 86 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="DGSW MANAGER" FontSize="35" Foreground="#707070" FontWeight="Bold" Margin="38 7 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="대소고 생활이 당신의 삶에서 가취있기를" FontSize="18" Foreground="#707070" FontWeight="Bold" Margin="38 56 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
         <Label Content="오늘의 날씨" FontSize="18" Foreground="#707070" FontWeight="Bold" Margin="0 41 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Image Name="WeatherImage" Source="./Image/night.png" Width="173" Height="171" Margin="0 48 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Label Name="WeatherTemp" Content="30˚C" FontSize="18" Foreground="#707070" Margin="0 205 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Label Name="WeatherContent" Content="날씨가 어두워요!! 웨어울프가 깨어나기 좋아요" FontSize="17" Foreground="#707070" Margin="0 235 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-        <Label Content="----년 --월 --일" FontSize="22" Foreground="#292929" FontWeight="Bold" Margin="728 32 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Name="TodayDate" Content="----년 --월 --일" FontSize="22" Foreground="#292929" FontWeight="Bold" Margin="728 32 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <Label Content="오늘의 일정" FontSize="22" Foreground="#292929" FontWeight="Bold" Margin="775 111 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-
-        <Grid Margin="756 144 0 0" Width="168" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Rectangle Width="168" Height="64" Fill="#7D7D7D" RadiusX="20" RadiusY="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <TextBox Background="Transparent" Text="오늘의 일정은 없습니다." HorizontalContentAlignment="Center" TextWrapping="WrapWithOverflow" FontSize="10" Width="140" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        </Grid>
+        <StackPanel Margin="756 111 0 0" Width="168" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
+            <Label Content="오늘의 일정" FontSize="22" Foreground="#292929" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Grid>
+                <Rectangle Width="168" Height="64" Fill="#7D7D7D" RadiusX="20" RadiusY="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox Name="ScheduleContent" BorderBrush="Transparent" Background="Transparent" Text="오늘의 일정은 없습니다." HorizontalContentAlignment="Center" TextWrapping="WrapWithOverflow" FontSize="10" Width="140" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </StackPanel>
 
         <Grid Margin="0 311 0 0" Height="215" VerticalAlignment="Top">
             <Grid.ColumnDefinitions >
@@ -37,36 +39,21 @@
 
             <Grid Grid.Column="0" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Label Content="아침" HorizontalContentAlignment="Center" FontSize="28" Width="64" Foreground="White" FontWeight="Bold" Margin="0 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Label Name="MealBreakfast" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="18" Width="140" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label Content="아침" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label Name="MealBreakfast" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="1" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Label Content="점심" HorizontalContentAlignment="Center" FontSize="28" Width="64" Foreground="White" FontWeight="Bold" Margin="0 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Label Name="MealLunch" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="18" Width="140" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label Content="점심" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label Name="MealLunch" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="2" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <Label Content="저녁" HorizontalContentAlignment="Center" FontSize="28" Width="64" Foreground="White" FontWeight="Bold" Margin="0 5 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Label Name="MealDinner" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="18" Width="140" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label Content="저녁" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label Name="MealDinner" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
-
-        
-
-
-
-
-
-            <Label Foreground="White" FontSize="15" Height="50" Name="api_test" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,98,391,302"/>
-        <Label Foreground="White" FontSize="15" Height="50" Name="api_test_Copy" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,164,391,236"/>
-        <Label Foreground="White" FontSize="15" Height="50" Name="api_test_Copy1" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,230,391,170"/>
-        <Label Foreground="White" FontSize="15" Height="50" Name="api_test_Copy2" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,298,391,102"/>
-        <Label Foreground="White" FontSize="15" Height="120" x:Name="meal1" Width="209" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="477,24,14,306"/>
-        <Label Foreground="White" FontSize="15" Height="124" x:Name="meal2" Width="209" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="477,148,14,178"/>
-        <Label Foreground="White" FontSize="15" Height="144" x:Name="meal3" Width="209" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="477,276,14,30" RenderTransformOrigin="0.48,-0.85"/>
-        <Label Foreground="White" FontSize="15" Height="50" x:Name="sche" Width="250" Content="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="59,24,391,376"/>
     </Grid>
 </Window>
