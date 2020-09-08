@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox FontSize="10" Height="20" Name="api_test" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox FontSize="10" Height="20" Name="api_test_Copy" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,225,347,178"/>
-        <TextBox FontSize="10" Height="20" Name="api_test_Copy1" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,253,347,150"/>
-        <TextBox FontSize="10" Height="20" Name="api_test_Copy2" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="347,283,347,120"/>
-        <TextBox FontSize="10" Height="20" x:Name="meal1" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,200,160,201"/>
-        <TextBox FontSize="10" Height="20" x:Name="meal2" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,224,160,177"/>
-        <TextBox FontSize="10" Height="20" x:Name="meal3" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,252,160,149"/>
-        <TextBox FontSize="10" Height="20" x:Name="meal4" Width="100" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="534,282,160,119"/>
+        <TextBox FontSize="15" Height="50" Name="api_test" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,84,438,287"/>
+        <TextBox FontSize="15" Height="50" Name="api_test_Copy" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,150,438,221"/>
+        <TextBox FontSize="15" Height="50" Name="api_test_Copy1" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,215,438,156"/>
+        <TextBox FontSize="15" Height="50" Name="api_test_Copy2" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,284,438,87"/>
+        <TextBox FontSize="15" Height="119" x:Name="meal1" Width="209" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="524,10,61,292"/>
+        <TextBox FontSize="15" Height="123" x:Name="meal2" Width="209" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="524,134,61,164"/>
+        <TextBox FontSize="15" Height="144" x:Name="meal3" Width="209" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="524,262,61,15" RenderTransformOrigin="0.48,-0.85"/>
+        <TextBox FontSize="15" Height="50" x:Name="sche" Width="250" Text="123" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,10,438,361"/>
     </Grid>
 </Window>

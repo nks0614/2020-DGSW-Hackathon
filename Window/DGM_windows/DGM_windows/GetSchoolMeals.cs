@@ -7,22 +7,31 @@ using System.Threading.Tasks;
 
 namespace DGM_windows
 {
-    class SchoolMeals
+    class GetSchoolMeals
     {
-        static string targetURL = "http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=D10&date=20200908";
+        
+        static string targetURL = string.Format("http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=D10&date={0}", MainWindow.Today);
 
-        public static void schoolMeals()
+        public static string[] schoolMeals()
         {
+            
 
             //1.WebClient 클래스 활용
             string webClientResult = callWebClient();
+
+            if(webClientResult.Equals("404") == true)
+            {
+                return new string[] { "급식정보가 존재하지 않습니다.", "급식정보가 존재하지 않습니다.", "급식정보가 존재하지 않습니다." };
+            }
 
             var r = JObject.Parse(webClientResult);
 
             var list = r["data"];
 
             //Console.WriteLine(r + Environment.NewLine + list);
-            var replaceStr = list["meals"][2].ToString().Replace("<br/>", Environment.NewLine);   //0은 아침, 1은 점심, 2는 저녁, br태그 삭제 후 줄바꿈
+            string[] returnResult = new string[] { list["meals"][0].ToString().Replace("<br/>", Environment.NewLine), list["meals"][1].ToString().Replace("<br/>", Environment.NewLine), list["meals"][2].ToString().Replace("<br/>", Environment.NewLine) };   //0은 아침, 1은 점심, 2는 저녁, br태그 삭제 후 줄바꿈
+
+            return returnResult;
         }
         public static string callWebClient()
         {
@@ -51,6 +60,7 @@ namespace DGM_windows
             {
                 //통신 실패시 처리로직
                 Console.WriteLine(e.ToString());
+                return "404";
             }
             return result;
         }
