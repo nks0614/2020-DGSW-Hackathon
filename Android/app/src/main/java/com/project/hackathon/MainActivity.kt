@@ -66,11 +66,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    //날씨 정보를 받아오는 함수
     private fun getWeather() {
         weatherAPI = weatherRetrofit.create(WeatherService::class.java)
         weatherAPI.getWeather(LAT, LON, APP_ID, UNITS)
             .enqueue(object : Callback<TotalWeather> {
+                //서버 통신 성공
                 override fun onResponse(
                     call: Call<TotalWeather>,
                     response: retrofit2.Response<TotalWeather>
@@ -81,13 +82,13 @@ class MainActivity : AppCompatActivity() {
 
                     main_temp.text = String.format("%.1f", response.body()?.main?.temp) + "°C"
                 }
-
+                //서버 통신 성공
                 override fun onFailure(call: Call<TotalWeather>, t: Throwable) {
-                    Log.d("Logg", t.message)
+
                 }
             })
     }
-
+    //받아온 날씨 정보에 따라 표시되는 이미지 변경
     fun setWeatherImgComment(icon : String?){
         if (icon == "01d") {
             main_weather_img.setImageResource(R.drawable.sun)
@@ -123,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         mealAPI = mealRetrofit.create(MealService::class.java)
         mealAPI.getMeal(SCHOOL_ID, OFFICE_CODE, today())
             .enqueue(object : Callback<Response<Meal>> {
+                //서버 통신 성공
                 override fun onResponse(
                     call: Call<Response<Meal>>,
                     response: retrofit2.Response<Response<Meal>>
@@ -150,22 +152,23 @@ class MainActivity : AppCompatActivity() {
                         dinner_menu.text = "오늘의 저녁은 없습니다."
                     }
                 }
-
+                //서버 통신 실패
                 override fun onFailure(call: Call<Response<Meal>>, t: Throwable) {
-                    Log.d("Logg", t.message)
+
                 }
             })
     }
-
+    //학사일정 정보를 받아오는 함수
     private fun getSchedule() {
         mealAPI = mealRetrofit.create(MealService::class.java)
         mealAPI.getSchedule(SCHOOL_ID, OFFICE_CODE, today())
             .enqueue(object : Callback<Response<Schedule>> {
+                //서버 통신 성공
                 override fun onResponse(
                     call: Call<Response<Schedule>>,
                     response: retrofit2.Response<Response<Schedule>>
                 ) {
-                    Log.d("Logg", response.body()?.status.toString())
+
                     if (response.body()?.status == null) {
                         main_schedule.text = "오늘은 학사일정이 없습니다."
                     } else {
@@ -173,9 +176,9 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 }
-
+                //서버 통신 실패
                 override fun onFailure(call: Call<Response<Schedule>>, t: Throwable) {
-                    Log.d("Logg", t.message)
+
                 }
             })
     }
@@ -183,7 +186,6 @@ class MainActivity : AppCompatActivity() {
     private fun today(): String {
         var now: Long = System.currentTimeMillis()
         var date: Date = Date(now)
-        Log.d("Logg", date.toString())
         var dateFormat: SimpleDateFormat = SimpleDateFormat("yyyyMMdd")
         var getTime: String = dateFormat.format(date)
 

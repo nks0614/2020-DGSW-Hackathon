@@ -16,7 +16,7 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
 
         CheckDB = DataBase.getInstance(this)
-
+        //add_button을 클릭시 db에 입력한 텍스트를 저장해준다
         add_button.setOnClickListener {
             CheckDB?.dao()?.insert(Check(0, add_edit.text.toString()))
             simIntent(MainActivity::class.java)
