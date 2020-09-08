@@ -61,16 +61,13 @@ class MainActivity : AppCompatActivity() {
 
         getWeather()
 
-        clickListener()
-    }
-
-    private fun clickListener() {
         main_addItem.setOnClickListener {
             simIntentNoFinish(AddActivity::class.java)
         }
     }
 
-    fun getWeather() {
+
+    private fun getWeather() {
         weatherAPI = weatherRetrofit.create(WeatherService::class.java)
         weatherAPI.getWeather(LAT, LON, APP_ID, UNITS)
             .enqueue(object : Callback<TotalWeather> {
@@ -80,32 +77,7 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     var icon = response.body()?.weatherList?.get(0)?.icon
 
-                    if (icon == "01d") {
-                        main_weather_img.setImageResource(R.drawable.sun)
-                        main_weather_comment.text = "아잇 눈부셔"
-                    } else if (icon == "01n") {
-                        main_weather_img.setImageResource(R.drawable.night)
-                        main_weather_comment.text = "소화도 할 겸 산책 어떤가요?"
-                    } else if (icon == "02d") {
-                        main_weather_img.setImageResource(R.drawable.sun_cloud)
-                        main_weather_comment.text = "오늘 야자는 강당이다"
-                    } else if (icon == "02n") {
-                        main_weather_img.setImageResource(R.drawable.night_cloud)
-                        main_weather_comment.text = "창문 열고 자면 추울 것 같아요"
-                    } else if (icon == "03d" || icon == "03n" || icon == "04d" || icon == "04n") {
-                        main_weather_img.setImageResource(R.drawable.cloud)
-                        main_weather_comment.text = "어두컴컴하니깐 텐션 떨어져요"
-                    } else if (icon == "09d" || icon == "09n" || icon == "10n" || icon == "10d") {
-                        main_weather_img.setImageResource(R.drawable.rain)
-                        main_weather_comment.text = "실내점호! 실내점호! 실내점호!"
-                    } else if (icon == "11d" || icon == "11n") {
-                        main_weather_img.setImageResource(R.drawable.thunder)
-                        main_weather_comment.text = "좀 더 격렬하게 실내점호! 실내점호!"
-                    } else if (icon == "13d" || icon == "13n") {
-                        main_weather_img.setImageResource(R.drawable.snow)
-                    } else if (icon == "50d" || icon == "50n") {
-                        main_weather_img.setImageResource(R.drawable.mist)
-                    }
+                    setWeatherImgComment(icon)
 
                     main_temp.text = String.format("%.1f", response.body()?.main?.temp) + "°C"
                 }
@@ -116,8 +88,37 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
+    fun setWeatherImgComment(icon : String?){
+        if (icon == "01d") {
+            main_weather_img.setImageResource(R.drawable.sun)
+            main_weather_comment.text = "아잇 눈부셔"
+        } else if (icon == "01n") {
+            main_weather_img.setImageResource(R.drawable.night)
+            main_weather_comment.text = "소화도 할 겸 산책 어떤가요?"
+        } else if (icon == "02d") {
+            main_weather_img.setImageResource(R.drawable.sun_cloud)
+            main_weather_comment.text = "오늘 야자는 강당이다"
+        } else if (icon == "02n") {
+            main_weather_img.setImageResource(R.drawable.night_cloud)
+            main_weather_comment.text = "창문 열고 자면 추울 것 같아요"
+        } else if (icon == "03d" || icon == "03n" || icon == "04d" || icon == "04n") {
+            main_weather_img.setImageResource(R.drawable.cloud)
+            main_weather_comment.text = "어두컴컴하니깐 텐션 떨어져요"
+        } else if (icon == "09d" || icon == "09n" || icon == "10n" || icon == "10d") {
+            main_weather_img.setImageResource(R.drawable.rain)
+            main_weather_comment.text = "실내점호! 실내점호! 실내점호!"
+        } else if (icon == "11d" || icon == "11n") {
+            main_weather_img.setImageResource(R.drawable.thunder)
+            main_weather_comment.text = "좀 더 격렬하게 실내점호! 실내점호!"
+        } else if (icon == "13d" || icon == "13n") {
+            main_weather_img.setImageResource(R.drawable.snow)
+        } else if (icon == "50d" || icon == "50n") {
+            main_weather_img.setImageResource(R.drawable.mist)
+        }
+    }
+
     //급식 정보를 받아오는 코드
-    fun getMeal() {
+    private fun getMeal() {
 
         mealAPI = mealRetrofit.create(MealService::class.java)
         mealAPI.getMeal(SCHOOL_ID, OFFICE_CODE, today())
@@ -156,7 +157,7 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    fun getSchedule() {
+    private fun getSchedule() {
         mealAPI = mealRetrofit.create(MealService::class.java)
         mealAPI.getSchedule(SCHOOL_ID, OFFICE_CODE, today())
             .enqueue(object : Callback<Response<Schedule>> {
@@ -179,7 +180,7 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    fun today(): String {
+    private fun today(): String {
         var now: Long = System.currentTimeMillis()
         var date: Date = Date(now)
         Log.d("Logg", date.toString())

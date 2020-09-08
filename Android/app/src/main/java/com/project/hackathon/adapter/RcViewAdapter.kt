@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.project.hackathon.ContentActivity
 import com.project.hackathon.MainActivity
 import com.project.hackathon.R
 import com.project.hackathon.data.Check
@@ -24,6 +25,13 @@ class RcViewAdapter : RecyclerView.Adapter<RcViewAdapter.Holder>(){
         val des = itemView.findViewById<TextView>(R.id.description)
         fun bind(check : Check) {
             des.text = check.description
+
+            itemView.setOnClickListener {
+                val i = Intent(itemView.context, ContentActivity::class.java)
+                i.putExtra("des", check.description)
+                i.putExtra("id", check.id)
+                itemView.context.startActivity(i)
+            }
         }
     }
 
