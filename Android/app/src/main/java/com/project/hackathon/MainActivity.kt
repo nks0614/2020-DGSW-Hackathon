@@ -24,11 +24,11 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    val SCHOOL_ID = "7240393"
-    val OFFICE_CODE = "D10"
+    private val schoolID = "7240393"
+    private val officeCode = "D10"
 
     private var checkList = ArrayList<Check>()
-    val rcViewAdapter = RcViewAdapter()
+    private val rcViewAdapter = RcViewAdapter()
     var checkDB : DataBase? = null
 
     lateinit var mealAPI : MealService
@@ -55,22 +55,22 @@ class MainActivity : AppCompatActivity() {
         clickListener()
     }
 
-    fun clickListener(){
+    private fun clickListener(){
         main_addItem.setOnClickListener {
             simIntentNoFinish(AddActivity::class.java)
         }
     }
-
+    //급식 정보를 받아오는 코드
     fun getMeal(){
-        var now : Long = System.currentTimeMillis()
-        var date : Date = Date(now)
-        var dateFormat : SimpleDateFormat = SimpleDateFormat("yyyyMMdd")
-        var getTime :String = dateFormat.format(date)
+        val now : Long = System.currentTimeMillis()
+        val date : Date = Date(now)
+        val dateFormat : SimpleDateFormat = SimpleDateFormat("yyyyMMdd")
+        val getTime :String = dateFormat.format(date)
 
         Log.d("Logg", getTime)
 
         mealAPI = mealRetrofit.create(MealService::class.java)
-        mealAPI.getMeal(SCHOOL_ID, OFFICE_CODE, getTime)
+        mealAPI.getMeal(schoolID, officeCode, getTime)
             .enqueue(object : Callback<Response<Meal>>{
                 override fun onResponse(call: Call<Response<Meal>>, response: retrofit2.Response<Response<Meal>>) {
                     breakfast_menu.text = Html.fromHtml(response.body()?.data?.meals?.get(0))
