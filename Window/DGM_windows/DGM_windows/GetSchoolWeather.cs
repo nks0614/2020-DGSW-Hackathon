@@ -22,9 +22,10 @@ namespace DGM_windows
 
             WeatherInfo.Root outPut = result;
 
-            string[] returnResult = new string[] { 
-                string.Format("{0} \u00B0" + "C", outPut.main.temp), 
-                string.Format("{0}", outPut.weather[0].main)
+            string[] returnResult = new string[] {
+                string.Format("{0} \u00B0" + "C", outPut.main.temp),
+                GetSchoolWeatherContent.GetWeatherContent(string.Format("{0}",outPut.weather[0].icon)),
+                GetSchoolWeatherContent.GetWeatherImage(string.Format("{0}",outPut.weather[0].icon))
                 };
 
             return returnResult;

@@ -5,21 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DGM_windows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="562" Width="1000"
+        Title="DGSW_Manager" Height="562" Width="1000"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         Topmost="True"  ShowInTaskbar="False"
-        WindowStartupLocation="Manual">
+        WindowStartupLocation="Manual" Icon="./Image/manager.png">
     <Grid Height="562" Width="1000">
         <Rectangle Fill="White" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
+        <Rectangle Panel.ZIndex="2" Fill="Transparent" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
         <Label Content="DGSW MANAGER" FontSize="35" Foreground="#707070" FontWeight="Bold" Margin="38 7 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="대소고 생활이 당신의 삶에서 가취있기를" FontSize="18" Foreground="#707070" FontWeight="Bold" Margin="38 56 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <Label Content="오늘의 날씨" FontSize="18" Foreground="#707070" FontWeight="Bold" Margin="0 41 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Image Name="WeatherImage" Source="./Image/night.png" Width="173" Height="171" Margin="0 48 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Label Name="WeatherTemp" Content="30˚C" FontSize="18" Foreground="#707070" Margin="0 205 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Label Name="WeatherContent" Content="날씨가 어두워요!! 웨어울프가 깨어나기 좋아요" FontSize="17" Foreground="#707070" Margin="0 235 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <StackPanel Margin="0 41 0 0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical">
+            <Label Content="오늘의 날씨" FontSize="18" Foreground="#707070" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Image Name="WeatherImage" Source="./Image/night.png" Width="131" Height="131" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Name="WeatherTemp" Content="30˚C" FontSize="18" Foreground="#707070" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Name="WeatherContent" Content="날씨가 어두워요!! 웨어울프가 깨어나기 좋아요" FontSize="17" Foreground="#707070" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        </StackPanel>
 
         <Label Name="TodayDate" Content="----년 --월 --일" FontSize="22" Foreground="#292929" FontWeight="Bold" Margin="728 32 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 

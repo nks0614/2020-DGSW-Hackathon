@@ -24,6 +24,7 @@ namespace DGM_windows
     public partial class MainWindow : Window
     {
         public static string Today = DateTime.Now.Date.Year.ToString() + DateTime.Now.Date.Month.ToString("00") + DateTime.Now.Date.Day.ToString("00");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +36,10 @@ namespace DGM_windows
 
             WeatherTemp.Content = getSchoolWeather[0];
             WeatherContent.Content = getSchoolWeather[1];
+
+
+            string uriSource = string.Format("pack://application:,,,/DGM_windows;component/Image/{0}.png",getSchoolWeather[2]);
+            WeatherImage.Source = new ImageSourceConverter().ConvertFromString(uriSource) as ImageSource;
 
             string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
 

@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +64,7 @@
     </ApplicationDefinition>
     <Compile Include="GetSchoolSchedule.cs" />
     <Compile Include="GetSchoolWeather.cs" />
+    <Compile Include="GetSchoolWeatherContent.cs" />
     <Compile Include="scheduleInfo.cs" />
     <Compile Include="GetSchoolMeals.cs" />
     <Compile Include="WeatherInfo.cs" />
@@ -107,7 +109,46 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\cloud.png" />
+    <Resource Include="Image\manager.png" />
+    <Resource Include="Image\mist.png" />
     <Resource Include="Image\night.png" />
+    <Resource Include="Image\night_cloud.png" />
+    <Resource Include="Image\rain.png" />
+    <Resource Include="Image\snow.png" />
+    <Resource Include="Image\sun.png" />
+    <Resource Include="Image\sun_cloud.png" />
+    <Resource Include="Image\thunder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\mist.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\night_cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\sun_cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\thunder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
