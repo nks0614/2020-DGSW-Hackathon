@@ -135,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                     var breakfast = response.body()?.data?.meals?.get(0)
                     var lunch = response.body()?.data?.meals?.get(1)
                     var dinner = response.body()?.data?.meals?.get(2)
-
+                    //조건에 따라 급식을 보여주거나 안보여줌
                     if (breakfast != null) {
                         breakfast_menu.text = Html.fromHtml(breakfast.replace("[0-9]".toRegex(),"").replace(".",""))
                     }
