@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="글쓰기"
         android:textSize="36sp"
-        android:textColor="#000"
+        android:textColor="#494A48"
         android:textStyle="bold"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
