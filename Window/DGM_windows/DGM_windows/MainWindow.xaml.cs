@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using System.Drawing;
 
 
 namespace DGM_windows
@@ -23,6 +25,11 @@ namespace DGM_windows
     /// 
     public partial class MainWindow : Window
     {
+
+        bool IsMouseDown = false;
+        System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
+        System.Windows.Point MoveStartLocation;
+
         public static string Today = DateTime.Now.Date.Year.ToString() + DateTime.Now.Date.Month.ToString("00") + DateTime.Now.Date.Day.ToString("00");
 
         public MainWindow()
@@ -69,8 +76,86 @@ namespace DGM_windows
             //var json = web.downloadstring(url);
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = true;
 
+            MoveStartLocation = GetMousePosition();
+        }
+        private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if(IsMouseDown == true)
+            {
+                System.Windows.Point Location = GetMousePosition();
+                this.Left = currentLocation.X += (Location.X - MoveStartLocation.X);
+                this.Top = currentLocation.Y += (Location.Y - MoveStartLocation.Y);
+            }
+        }
+        private void Window_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = false;
+        }
 
+        public System.Windows.Point GetMousePosition()
+        {
+            return Mouse.GetPosition(MainWindows);
+        }
 
+        public System.Windows.Forms.NotifyIcon notify;
+        private void MainWindows_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.ContextMenu menu = new System.Windows.Forms.ContextMenu();
+                // 아이콘 설정부분
+                notify = new System.Windows.Forms.NotifyIcon();
+                //notify.Icon = new System.Drawing.Icon(@"manager.png");  // 외부아이콘 사용 시
+
+                notify.Icon = Properties.Resources.ManagerIcon;   // Resources 아이콘 사용 시
+                notify.Visible = true;
+                notify.ContextMenu = menu;
+                notify.Text = "DGSW_Manger";
+
+                // 아이콘 더블클릭 이벤트 설정
+                notify.DoubleClick += Notify_DoubleClick;
+
+                System.Windows.Forms.MenuItem exitProgram = new System.Windows.Forms.MenuItem();
+                menu.MenuItems.Add(exitProgram);
+                exitProgram.Index = 0;
+                exitProgram.Text = "프로그램 종료";
+                exitProgram.Click += delegate (object click, EventArgs eClick)
+                {
+                    System.Windows.Application.Current.Shutdown();
+                    notify.Dispose();
+                };
+
+                System.Windows.Forms.MenuItem ShowProgram = new System.Windows.Forms.MenuItem();
+                menu.MenuItems.Add(ShowProgram);
+                ShowProgram.Index = 0;
+                ShowProgram.Text = "프로그램 숨기기";
+                ShowProgram.Click += delegate (object click, EventArgs eClick)
+                {
+                    if (this.Visibility == Visibility.Visible)
+                    {
+                        ShowProgram.Text = "프로그램 보이기";
+                        this.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        ShowProgram.Text = "프로그램 숨기기";
+                        this.Visibility = Visibility.Visible;
+                    }
+                };
+            }
+            catch (Exception ee)
+            {
+            }
+        }
+
+        private void Notify_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+            this.Visibility = Visibility.Visible;
+        }
     }
 }

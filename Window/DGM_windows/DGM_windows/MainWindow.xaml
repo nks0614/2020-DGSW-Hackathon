@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DGM_windows"
         mc:Ignorable="d"
-        Title="DGSW_Manager" Height="562" Width="1000"
+        Title="DGSW_Manager" Height="562" Width="1000"  
         WindowStyle="None"
         AllowsTransparency="True"
+        ResizeMode="NoResize"
         Background="Transparent"
         Topmost="True"  ShowInTaskbar="False"
-        WindowStartupLocation="Manual" Icon="./Image/manager.png">
+        WindowStartupLocation="Manual" Icon="./Image/manager.png"
+        MouseDown="Window_MouseDown"
+        MouseMove="Window_MouseMove"
+        MouseUp="Window_MouseUp"
+        Loaded="MainWindows_Loaded"
+        Name="MainWindows"
+        Left="0"
+        Top="0">
     <Grid Height="562" Width="1000">
         <Rectangle Fill="White" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
         <Rectangle Panel.ZIndex="2" Fill="Transparent" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
