@@ -16,3 +16,6 @@ C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\D
 C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\bin\Debug\Newtonsoft.Json.dll
 C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\bin\Debug\Newtonsoft.Json.xml
 C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\obj\Debug\DGM_windows.csproj.CopyComplete
+C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\obj\Debug\DGM_windows_Content.g.cs
+C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\bin\Debug\Schedule.mdf
+C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\bin\Debug\Schedule_log.ldf

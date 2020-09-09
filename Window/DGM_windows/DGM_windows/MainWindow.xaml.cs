@@ -25,7 +25,6 @@ namespace DGM_windows
     /// 
     public partial class MainWindow : Window
     {
-
         bool IsMouseDown = false;
         System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
         System.Windows.Point MoveStartLocation;
@@ -35,7 +34,6 @@ namespace DGM_windows
         public MainWindow()
         {
             InitializeComponent();
-
 
             TodayDate.Content = DateTime.Now.Date.Year.ToString() + "년 " + DateTime.Now.Date.Month.ToString("00") + "월 " + DateTime.Now.Date.Day.ToString("00") + "일";
 
@@ -57,23 +55,6 @@ namespace DGM_windows
             string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
             ScheduleContent.Text = getSchoolSchedule[0];
-
-
-
-            //string url = string.Format("http://api.openweathermap.org/data/2.5/weather?lat=35.663053&lon=128.413726&APPID=09c8dfc52b7541d33c528d09a55e2c18&units=metric");
-
-            //var json = web.DownloadString(url);
-
-
-            //string url = string.Format("http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=d10&date=20200908");
-
-            //var json = web.downloadstring(url);
-
-
-
-            //string url = string.format("http://kyungwon-server.kro.kr:8080/schedule?school_id=7240393&office_code=d10&date=20200912");
-
-            //var json = web.downloadstring(url);
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
