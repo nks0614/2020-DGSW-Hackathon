@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Data;
+using System.Data.SqlClient;
 
 
 namespace DGM_windows
@@ -25,6 +27,8 @@ namespace DGM_windows
     /// 
     public partial class MainWindow : Window
     {
+        //SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
+
         bool IsMouseDown = false;
         System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
         System.Windows.Point MoveStartLocation;
@@ -34,6 +38,31 @@ namespace DGM_windows
         public MainWindow()
         {
             InitializeComponent();
+
+
+            //connect.Open();
+
+            /*SqlCommand cmd = new SqlCommand(@"INSERT INTO Schedule (id, time, description)
+            VALUES (3,'20030901','3')", connect);
+
+            cmd.ExecuteNonQuery();*/
+
+
+            /*using (SqlCommand command = new SqlCommand("SELECT description FROM Schedule", connect))
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    MealLunch.Content = string.Format("{0}", reader.GetString(0));
+                }
+            }*/
+
+            /*SqlCommand cmd = new SqlCommand("Delete From Schedule Where id = 1", connect);
+
+            cmd.ExecuteNonQuery();*/
+            
+
+            //connect.Close();
 
             TodayDate.Content = DateTime.Now.Date.Year.ToString() + "년 " + DateTime.Now.Date.Month.ToString("00") + "월 " + DateTime.Now.Date.Day.ToString("00") + "일";
 
@@ -46,11 +75,23 @@ namespace DGM_windows
             string uriSource = string.Format("pack://application:,,,/DGM_windows;component/Image/{0}.png",getSchoolWeather[2]);
             WeatherImage.Source = new ImageSourceConverter().ConvertFromString(uriSource) as ImageSource;
 
-            string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
+            string[][] getSchoolMeals = GetSchoolMeals.schoolMeals();
 
-            MealBreakfast.Content = getSchoolMeals[0];
-            MealLunch.Content = getSchoolMeals[1];
-            MealDinner.Content = getSchoolMeals[2];
+            string[] meals = { "" , "", "" };
+
+            for (int i = 0; i < 3; i++)
+            {
+                meals[i] = "";
+                for (int j = 0; j < getSchoolMeals[i].Length; j++)
+                {
+                    meals[i] += getSchoolMeals[i][j];
+                    meals[i] += Environment.NewLine;
+                }
+            }
+
+            MealBreakfast.Content = meals[0];
+            MealLunch.Content = meals[1];
+            MealDinner.Content = meals[2];
 
             string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
@@ -137,6 +178,20 @@ namespace DGM_windows
         {
             this.Show();
             this.Visibility = Visibility.Visible;
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MealDinner.Content = "asdasdas";
+            System.Windows.Shapes.Rectangle back = new System.Windows.Shapes.Rectangle();
+            back.Fill = System.Windows.Media.Brushes.White;
+            back.Stroke = System.Windows.Media.Brushes.Black;
+            back.StrokeThickness = 1;
+            back.Width = 100;
+            back.Height = 200;
+           /* System.Windows.Controls.TextBox textbox1 = new System.Windows.Controls.TextBox();
+            textbox1.Text = "날짜를 입력하세요 (20200909)";
+            textbox1.*/
         }
     }
 }

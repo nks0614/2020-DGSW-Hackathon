@@ -35,8 +35,11 @@
         <Label Name="TodayDate" Content="----년 --월 --일" FontSize="22" Foreground="#292929" FontWeight="Bold" Margin="728 32 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
         <StackPanel Margin="756 111 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
-            <Label Content="오늘의 일정" FontSize="22" Foreground="#292929" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Label Content="오늘의 일정" FontSize="22" Foreground="#292929" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Image Panel.ZIndex="3" Source="./Image/add.png" Width="20" Height="20" MouseDown="Image_MouseDown"/>
+            </StackPanel>
+            <Grid>
                 <Rectangle Width="168" Height="64" Fill="#7D7D7D" RadiusX="20" RadiusY="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBox Name="ScheduleContent" BorderBrush="Transparent" Background="Transparent" Text="오늘의 일정은 없습니다." HorizontalContentAlignment="Center" TextWrapping="WrapWithOverflow" FontSize="10" Width="140" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>

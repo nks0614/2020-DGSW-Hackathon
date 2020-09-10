@@ -12,7 +12,7 @@ namespace DGM_windows
         
         static string targetURL = string.Format("http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=D10&date={0}", MainWindow.Today);
 
-        public static string[] schoolMeals()
+        public static string[][] schoolMeals()
         {
             
 
@@ -21,7 +21,7 @@ namespace DGM_windows
 
             if(webClientResult.Equals("404") == true)
             {
-                return new string[] { "급식정보가 존재하지 않습니다.", "급식정보가 존재하지 않습니다.", "급식정보가 존재하지 않습니다." };
+                return new string[][] { new string[] { "급식정보가 존재하지 않습니다." }, new string[] { "급식정보가 존재하지 않습니다." }, new string[] { "급식정보가 존재하지 않습니다." } };
             }
 
             var r = JObject.Parse(webClientResult);
@@ -29,7 +29,15 @@ namespace DGM_windows
             var list = r["data"];
 
             //Console.WriteLine(r + Environment.NewLine + list);
-            string[] returnResult = new string[] { list["meals"][0].ToString().Replace("<br/>", Environment.NewLine), list["meals"][1].ToString().Replace("<br/>", Environment.NewLine), list["meals"][2].ToString().Replace("<br/>", Environment.NewLine) };   //0은 아침, 1은 점심, 2는 저녁, br태그 삭제 후 줄바꿈
+            string[][] returnResult = new string[][] { list["meals"][0].ToString().Replace("<br/>", "$").Split('$'), list["meals"][1].ToString().Replace("<br/>", "$").Split('$'), list["meals"][2].ToString().Replace("<br/>", "$").Split('$') };   //0은 아침, 1은 점심, 2는 저녁, br태그 삭제 후 줄바꿈
+
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < returnResult[i].Length; j++)
+                {
+                    returnResult[i][j] = returnResult[i][j].Split(new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' })[0];
+                }
+            }
 
             return returnResult;
         }
