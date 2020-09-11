@@ -12,7 +12,7 @@ namespace DGM_windows
         
         static string targetURL = string.Format("http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=D10&date={0}", MainWindow.Today);
 
-        public static string[][] schoolMeals()
+        public static string[] schoolMeals()
         {
             
 
@@ -21,7 +21,7 @@ namespace DGM_windows
 
             if(webClientResult.Equals("404") == true)
             {
-                return new string[][] { new string[] { "급식정보가 존재하지 않습니다." }, new string[] { "급식정보가 존재하지 않습니다." }, new string[] { "급식정보가 존재하지 않습니다." } };
+                return new string[] { "급식정보가 존재하지 않습니다.", "급식정보가 존재하지 않습니다.", "급식정보가 존재하지 않습니다." };
             }
 
             var r = JObject.Parse(webClientResult);
@@ -39,7 +39,20 @@ namespace DGM_windows
                 }
             }
 
-            return returnResult;
+            string[] meals = { "", "", "" };
+
+            for (int i = 0; i < 3; i++)
+            {
+                meals[i] = "";
+                for (int j = 0; j < returnResult[i].Length; j++)
+                {
+                    meals[i] += returnResult[i][j];
+                    meals[i] += Environment.NewLine;
+                }
+                if (meals[i].Equals(Environment.NewLine)) meals[i] = "급식정보가 존재하지 않습니다.";
+            }
+
+            return meals;
         }
         public static string callWebClient()
         {

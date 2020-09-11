@@ -35,15 +35,15 @@
         <Label Name="TodayDate" Content="----년 --월 --일" FontSize="22" Foreground="#292929" FontWeight="Bold" Margin="728 32 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
         <StackPanel Margin="756 111 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Label Content="오늘의 일정" FontSize="22" Foreground="#292929" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Image Panel.ZIndex="3" Source="./Image/add.png" Width="20" Height="20" MouseDown="Image_MouseDown"/>
             </StackPanel>
             <Grid>
                 <Rectangle Width="168" Height="64" Fill="#7D7D7D" RadiusX="20" RadiusY="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBox Name="ScheduleContent" BorderBrush="Transparent" Background="Transparent" Text="오늘의 일정은 없습니다." HorizontalContentAlignment="Center" TextWrapping="WrapWithOverflow" FontSize="10" Width="140" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>
         </StackPanel>
+        <Image Panel.ZIndex="3" Source="./Image/add.png" Width="20" Height="20" Margin="906 121 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="Image_MouseDown"/>
 
         <Grid Margin="0 311 0 0" Height="215" VerticalAlignment="Top">
             <Grid.ColumnDefinitions >
@@ -55,19 +55,19 @@
             <Grid Grid.Column="0" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="아침" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Label Name="MealBreakfast" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBox Name="MealBreakfast" Text="푸팟퐁 커리" TextWrapping="WrapWithOverflow" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="1" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="점심" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Label Name="MealLunch" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBox Name="MealLunch" Text="푸팟퐁 커리" TextWrapping="WrapWithOverflow" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="2" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="저녁" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                <Label Name="MealDinner" Content="푸팟퐁 커리" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <TextBox Name="MealDinner" Text="푸팟퐁 커리" TextWrapping="WrapWithOverflow" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

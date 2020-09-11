@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.ComponentModel;
 
 namespace DGM_windows
 {
@@ -29,7 +29,7 @@ namespace DGM_windows
     {
         //SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
 
-        bool IsMouseDown = false;
+        public bool IsMouseDown = false;
         System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
         System.Windows.Point MoveStartLocation;
 
@@ -75,23 +75,13 @@ namespace DGM_windows
             string uriSource = string.Format("pack://application:,,,/DGM_windows;component/Image/{0}.png",getSchoolWeather[2]);
             WeatherImage.Source = new ImageSourceConverter().ConvertFromString(uriSource) as ImageSource;
 
-            string[][] getSchoolMeals = GetSchoolMeals.schoolMeals();
+            string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
 
-            string[] meals = { "" , "", "" };
+            
 
-            for (int i = 0; i < 3; i++)
-            {
-                meals[i] = "";
-                for (int j = 0; j < getSchoolMeals[i].Length; j++)
-                {
-                    meals[i] += getSchoolMeals[i][j];
-                    meals[i] += Environment.NewLine;
-                }
-            }
-
-            MealBreakfast.Content = meals[0];
-            MealLunch.Content = meals[1];
-            MealDinner.Content = meals[2];
+            MealBreakfast.Text = getSchoolMeals[0];
+            MealLunch.Text = getSchoolMeals[1];
+            MealDinner.Text = getSchoolMeals[2];
 
             string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
@@ -101,21 +91,26 @@ namespace DGM_windows
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             IsMouseDown = true;
-
+            MealBreakfast.Text = "버튼눌림";
             MoveStartLocation = GetMousePosition();
         }
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if(IsMouseDown == true)
             {
+
+                MealBreakfast.Text = "이동중";
                 System.Windows.Point Location = GetMousePosition();
                 this.Left = currentLocation.X += (Location.X - MoveStartLocation.X);
                 this.Top = currentLocation.Y += (Location.Y - MoveStartLocation.Y);
             }
+
         }
         private void Window_MouseUp(object sender, MouseButtonEventArgs e)
         {
             IsMouseDown = false;
+
+            MealBreakfast.Text = "버튼 올라감";
         }
 
         public System.Windows.Point GetMousePosition()
@@ -176,22 +171,39 @@ namespace DGM_windows
 
         private void Notify_DoubleClick(object sender, EventArgs e)
         {
-            this.Show();
-            this.Visibility = Visibility.Visible;
+            if(this.Visibility == Visibility.Visible)
+            {
+                this.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                this.Visibility = Visibility.Visible;
+            }
         }
-
+        public void memo_close(object sender, EventArgs e)
+        {
+            IsMouseDown = false;
+            MealLunch.Text = "ㅎㅎㅎ";
+        }
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MealDinner.Content = "asdasdas";
+            MealDinner.Text = "버튼 눌렸또";
+            Memo memo = new Memo();
+            memo.ShowDialog();
+            memo.Closing += memo_close;
             System.Windows.Shapes.Rectangle back = new System.Windows.Shapes.Rectangle();
-            back.Fill = System.Windows.Media.Brushes.White;
+            back.Fill = System.Windows.Media.Brushes.Red;
             back.Stroke = System.Windows.Media.Brushes.Black;
             back.StrokeThickness = 1;
             back.Width = 100;
             back.Height = 200;
-           /* System.Windows.Controls.TextBox textbox1 = new System.Windows.Controls.TextBox();
+            back.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            back.VerticalAlignment = VerticalAlignment.Top;
+            back.Visibility = Visibility.Visible;
+            
+            System.Windows.Controls.TextBox textbox1 = new System.Windows.Controls.TextBox();
             textbox1.Text = "날짜를 입력하세요 (20200909)";
-            textbox1.*/
+            textbox1.Visibility = Visibility.Visible;
         }
     }
 }
