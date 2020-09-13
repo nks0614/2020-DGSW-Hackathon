@@ -29,7 +29,7 @@ namespace DGM_windows
     {
         //SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
 
-        public bool IsMouseDown = false;
+        static public bool IsMouseDown = false;
         System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
         System.Windows.Point MoveStartLocation;
 
@@ -180,7 +180,7 @@ namespace DGM_windows
                 this.Visibility = Visibility.Visible;
             }
         }
-        public void memo_close(object sender, EventArgs e)
+        public void memo_close(object sender, CancelEventArgs e)
         {
             IsMouseDown = false;
             MealLunch.Text = "ㅎㅎㅎ";

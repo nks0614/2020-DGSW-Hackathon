@@ -23,5 +23,10 @@ namespace DGM_windows
         {
             InitializeComponent();
         }
+
+        private void SaveButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
