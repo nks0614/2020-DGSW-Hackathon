@@ -10,16 +10,16 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Background="Transparent"
-        Topmost="True"  ShowInTaskbar="False">
+        Topmost="True"  ShowInTaskbar="False" Closing="Memo_Closing">
     <Grid>
-        <Rectangle Fill="White" Height="200" Width="400" RadiusX="10" RadiusY="10"/>
+        <Rectangle Fill="Gray" Stroke="Black" Height="200" Width="400" RadiusX="10" RadiusY="10"/>
         <Grid Margin="0 10 0 0" Width="380" Height="180" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="140"/>
                 <RowDefinition Height="10"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <TextBox Name="SaveDescription" Grid.Row="0" Text="일정을 입력하세요." Background="Transparent" BorderBrush="Black" />
+            <TextBox FontSize="20" TextWrapping="WrapWithOverflow" Name="SaveDescription" Grid.Row="0" Text="일정을 입력하세요." Background="White" BorderBrush="Black" />
             <Grid Grid.Row="2">
                 <Rectangle Name="SaveButton" Fill="White" Stroke="Black" RadiusX="5" RadiusY="5" MouseDown="SaveButton_MouseDown"/>
                 <Label Content="저장" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>

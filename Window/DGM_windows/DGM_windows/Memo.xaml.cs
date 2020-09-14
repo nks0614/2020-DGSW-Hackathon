@@ -28,5 +28,10 @@ namespace DGM_windows
         {
             this.Close();
         }
+
+        private void Memo_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow.IsClose = 1;
+        }
     }
 }
