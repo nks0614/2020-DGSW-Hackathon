@@ -41,7 +41,7 @@ namespace DGM_windows
             InitializeComponent();
 
 
-            //connect.Open();
+            /*connect.Open();
 
             /*SqlCommand cmd = new SqlCommand(@"INSERT INTO Schedule (id, time, description)
             VALUES (3,'20030901','3')", connect);
