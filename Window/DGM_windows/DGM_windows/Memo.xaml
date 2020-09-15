@@ -15,14 +15,29 @@
         <Rectangle Fill="Gray" Stroke="Black" Height="200" Width="400" RadiusX="10" RadiusY="10"/>
         <Grid Margin="0 10 0 0" Width="380" Height="180" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <TextBox FontSize="20" TextWrapping="WrapWithOverflow" Name="SaveDescription" Grid.Row="0" Text="일정을 입력하세요." Background="White" BorderBrush="Black" />
+            <Grid Grid.Row="1">
+                <Rectangle Panel.ZIndex="2" Fill="Transparent" Height="30" Width="351" VerticalAlignment="Center" HorizontalAlignment="Left" Stroke="Transparent"/>
+                <DatePicker Name="SaveDate" FontSize="12" Panel.ZIndex="1" VerticalAlignment="Center" Width="380" Height="30" VerticalContentAlignment="Center" BorderBrush="Transparent"/>
+            </Grid>
             <Grid Grid.Row="2">
-                <Rectangle Name="SaveButton" Fill="White" Stroke="Black" RadiusX="5" RadiusY="5" MouseDown="SaveButton_MouseDown"/>
-                <Label Content="저장" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Rectangle Name="SaveButton" Fill="White" Stroke="Black" RadiusX="5" RadiusY="5" MouseDown="SaveButton_MouseDown"/>
+                    <Label Content="저장" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Rectangle Name="DeleteButton" Fill="White" Stroke="Black" RadiusX="5" RadiusY="5" MouseDown="DeleteButton_MouseDown"/>
+                    <Label Content="삭제" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

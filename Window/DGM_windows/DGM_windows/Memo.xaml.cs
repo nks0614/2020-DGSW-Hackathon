@@ -23,46 +23,47 @@ namespace DGM_windows
     {
         SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
 
-        string count;
+        int count;
 
         public Memo()
         {
             InitializeComponent();
+            SaveDate.SelectedDate = DateTime.Now;
         }
 
         private void SaveButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
             connect.Open();
-
-            using (SqlCommand command = new SqlCommand("SELECT description FROM Schedule where id = 0", connect))
+            using (SqlCommand command = new SqlCommand("SELECT count(*) FROM Schedule where id = 0", connect))
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    count = reader.GetString(0);
+                    count = reader.GetInt32(0);
                 }
             }
-
-            MessageBox.Show(count);
-
             connect.Close();
 
-            /*connect.Open();
 
-            SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO Schedule (id, time, description) VALUES ({0},N'20030901',N'{1}')", count, SaveDescription.Text), connect);
-            
+            connect.Open();
+            SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO Schedule (id, time, description) VALUES ({0},N'{1}',N'{2}')", count, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], SaveDescription.Text), connect);
             cmd.ExecuteNonQuery();
-
-            connect.Close();*/
+            connect.Close();
 
             this.Close();
 
+        }
+
+        private void DeleteButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
 
         private void Memo_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow.IsClose = 1;
         }
+
     }
 }
