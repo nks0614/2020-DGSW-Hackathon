@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Background="Transparent"
-        Topmost="True"  ShowInTaskbar="False">
+        Topmost="True"  ShowInTaskbar="False" Closed="Schedule_Closed">
     <Grid>
         <Rectangle Fill="Gray" Stroke="Black" Height="600" Width="400" RadiusX="10" RadiusY="10"/>
         <Grid Margin="0 10 0 0" Width="380" Height="580" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -26,11 +26,13 @@
                 <DatePicker Name="SelectDate" FontSize="12" Panel.ZIndex="1" VerticalAlignment="Center" Width="380" Height="30" VerticalContentAlignment="Center" BorderBrush="Transparent"/>
             </Grid>
             <Grid Grid.Row="2">
-                <ScrollViewer Name="ScheduleViewContent" Background="White" IsDeferredScrollingEnabled="True" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden"/>
+                <ScrollViewer Background="Transparent" IsDeferredScrollingEnabled="True" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+                    <StackPanel Name="ScheduleViewContent" Orientation="Vertical" Background="Transparent"/>
+                </ScrollViewer>
             </Grid>
             <Grid Grid.Row="4">
-                <Rectangle Name="SaveButton" Fill="White" Stroke="Black" RadiusX="5" RadiusY="5"/>
-                <Label Content="저장" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <Rectangle Name="CloseButton" Fill="White" Stroke="Black" RadiusX="5" RadiusY="5" MouseDown="CloseButton_MouseDown"/>
+                <Label Content="닫기" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
         </Grid>
     </Grid>

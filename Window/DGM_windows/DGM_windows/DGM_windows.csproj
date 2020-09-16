@@ -78,7 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="getScheduleInfo.cs" />
     <Compile Include="GetSchoolSchedule.cs" />
+    <Compile Include="GetSchoolScheduleContent.cs" />
     <Compile Include="GetSchoolWeather.cs" />
     <Compile Include="GetSchoolWeatherContent.cs" />
     <Compile Include="Memo.xaml.cs">
