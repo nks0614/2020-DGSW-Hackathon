@@ -33,32 +33,54 @@ namespace DGM_windows
 
         private void SaveButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
-            connect.Open();
-            using (SqlCommand command = new SqlCommand("SELECT count(*) FROM Schedule where id = 0", connect))
-            using (SqlDataReader reader = command.ExecuteReader())
+            if (SaveButtonText.Content.ToString().Equals("저장"))
             {
-                while (reader.Read())
+                connect.Open();
+                using (SqlCommand command = new SqlCommand("SELECT id FROM Schedule", connect))
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    count = reader.GetInt32(0);
+                    while (reader.Read())
+                    {
+                        count = reader.GetInt32(0);
+                    }
                 }
+                int id = count + 1;
+                connect.Close();
+
+                connect.Open();
+                SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO Schedule (id, time, description) VALUES ({0},N'{1}',N'{2}')", id, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], SaveDescription.Text), connect);
+                cmd.ExecuteNonQuery();
+                connect.Close();
+
+                this.Close();
             }
-            connect.Close();
+            else if(SaveButtonText.Content.ToString().Equals("수정"))
+            {
+                connect.Open();
+                SqlCommand cmd = new SqlCommand(string.Format("UPDATE Schedule SET description = N'{0}', time = N'{1}' WHERE id = {2}", SaveDescription.Text, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], id.Content.ToString().Replace("id", "")), connect);
+                cmd.ExecuteNonQuery();
+                connect.Close();
 
-
-            connect.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO Schedule (id, time, description) VALUES ({0},N'{1}',N'{2}')", count, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], SaveDescription.Text), connect);
-            cmd.ExecuteNonQuery();
-            connect.Close();
-
-            this.Close();
+                this.Close();
+            }
         }
 
         private void DeleteButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
-        }
+            if (SaveButtonText.Content.ToString().Equals("저장"))
+            {
+                this.Close();
+            }
+            else if (SaveButtonText.Content.ToString().Equals("수정"))
+            {
+                connect.Open();
+                SqlCommand cmd = new SqlCommand(string.Format("DELETE From Schedule WHERE id = {0}", id.Content.ToString().Replace("id", "")), connect);
+                cmd.ExecuteNonQuery();
+                connect.Close();
 
+                this.Close();
+            }
+        }
         private void Memo_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow.IsClose = 1;

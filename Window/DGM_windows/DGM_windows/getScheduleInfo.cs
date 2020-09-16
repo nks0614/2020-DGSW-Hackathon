@@ -10,7 +10,7 @@ namespace DGM_windows
     {
         public class ScheduleInfo
         {
-            public int id { get; set; }
+            public string id { get; set; }
             public string description { get; set; }
         }
     }

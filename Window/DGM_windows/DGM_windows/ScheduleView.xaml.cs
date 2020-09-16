@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DGM_windows
 {
@@ -24,11 +26,16 @@ namespace DGM_windows
             InitializeComponent();
             SelectDate.SelectedDate = DateTime.Now;
 
-            List<getScheduleInfo.ScheduleInfo> FixValue = GetSchoolScheduleContent.getFixScheduleContent(MainWindow.Today);
-            List<getScheduleInfo.ScheduleInfo> DynamicValue = GetSchoolScheduleContent.getDynamicScheduleContent(MainWindow.Today);
+            SetSchedule(MainWindow.Today);
+        }
+        private void SetSchedule(string SelectDay)
+        {
+            ScheduleViewContent.Children.Clear();
+            List<getScheduleInfo.ScheduleInfo> FixValue = GetSchoolScheduleContent.getFixScheduleContent(SelectDay);
+            List<getScheduleInfo.ScheduleInfo> DynamicValue = GetSchoolScheduleContent.getDynamicScheduleContent(SelectDay);
             if ((FixValue.Count + DynamicValue.Count) == 0)
             {
-                ScheduleViewContent.Children.Add(MakeTextBox(1, "일정이 없습니다.", true));
+                ScheduleViewContent.Children.Add(MakeTextBox("1", "일정이 없습니다.", true));
             }
             else
             {
@@ -43,7 +50,7 @@ namespace DGM_windows
             }
         }
 
-        private Grid MakeTextBox(int id, string description, bool isFix)
+        private Grid MakeTextBox(string id, string description, bool isFix)
         {
             Grid grid = new Grid();
 
@@ -69,7 +76,7 @@ namespace DGM_windows
             testText.VerticalAlignment = VerticalAlignment.Center;
             testText.HorizontalAlignment = HorizontalAlignment.Center;
 
-            grid.Name = (string.Format("id{0}", id));
+            grid.Name = "id" + id;
             grid.Margin = new Thickness(0, 0, 0, 5);
             grid.Children.Add(rectangle);
             grid.Children.Add(testText);
@@ -98,8 +105,37 @@ namespace DGM_windows
         {
             var selectingName = sender as DependencyObject;
             string name = selectingName.GetValue(Grid.NameProperty) as string;
-            name = name.Replace("id", "");
-            MessageBox.Show(name);
+            string description;
+
+            Memo memo = new Memo();
+            memo.SaveButtonText.Content = "수정";
+            memo.id.Content = name;
+            SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
+
+            connect.Open();
+            using (SqlCommand command = new SqlCommand(string.Format("SELECT description FROM Schedule where id = '{0}'", name.Replace("id","")), connect))
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                reader.Read();
+                description = reader.GetString(0);
+            }
+            connect.Close();
+
+            memo.SaveDate.SelectedDate = SelectDate.SelectedDate;
+
+            memo.SaveDescription.Text = description;
+            memo.Closed += Memo_Closed;
+            memo.ShowDialog();
+        }
+
+        private void Memo_Closed(object sender, EventArgs e)
+        {
+            SetSchedule(SelectDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0]);
+        }
+
+        private void SelectDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SetSchedule(SelectDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0]);
         }
     }
 }

@@ -23,7 +23,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Rectangle Fill="White" Stroke="Black" RadiusX="5" RadiusY="5"/>
-                <DatePicker Name="SelectDate" FontSize="12" Panel.ZIndex="1" VerticalAlignment="Center" Width="380" Height="30" VerticalContentAlignment="Center" BorderBrush="Transparent"/>
+                <DatePicker Name="SelectDate" SelectedDateChanged="SelectDate_SelectedDateChanged" FontSize="12" Panel.ZIndex="1" VerticalAlignment="Center" Width="380" Height="30" VerticalContentAlignment="Center" BorderBrush="Transparent"/>
             </Grid>
             <Grid Grid.Row="2">
                 <ScrollViewer Background="Transparent" IsDeferredScrollingEnabled="True" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">

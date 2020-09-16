@@ -31,7 +31,7 @@ namespace DGM_windows
                 foreach(scheduleInfo.schedules getValue in outPut.data.schedules)
                 {
                     getScheduleInfo.ScheduleInfo value = new getScheduleInfo.ScheduleInfo();
-                    value.id = -1;
+                    value.id = "0";
                     value.description = getValue.name;
                     returnResult.Add(value);
                 }
@@ -57,7 +57,7 @@ namespace DGM_windows
                     while (reader.Read())
                     {
                         getScheduleInfo.ScheduleInfo value = new getScheduleInfo.ScheduleInfo();
-                        value.id = Int32.Parse(reader["Id"].ToString());
+                        value.id = reader["Id"].ToString();
                         value.description = reader["description"].ToString();
                         returnResult.Add(value);
                     }
