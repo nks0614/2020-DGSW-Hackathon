@@ -18,7 +18,8 @@
         Loaded="MainWindows_Loaded"
         Name="MainWindows"
         Left="0"
-        Top="0">
+        Top="0"
+        Closed="MainWindows_Closed">
     <Grid Height="562" Width="1000">
         <Rectangle Fill="White" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
         <Rectangle Panel.ZIndex="2" Fill="Transparent" Height="562" Width="1000" RadiusX="50" RadiusY="50"/>
@@ -44,6 +45,7 @@
             </Grid>
         </StackPanel>
         <Image Panel.ZIndex="3" Source="./Image/add.png" Width="20" Height="20" Margin="906 121 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="Image_MouseDown"/>
+        <Rectangle Panel.ZIndex="3" Margin="756 151 0 0" Width="168" Height="64" Fill="Transparent" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="Schedule_MouseDown"/>
 
         <Grid Margin="0 311 0 0" Height="215" VerticalAlignment="Top">
             <Grid.ColumnDefinitions >

@@ -21,3 +21,5 @@ C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\D
 C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\bin\Debug\Schedule_log.ldf
 C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\obj\Debug\Memo.g.cs
 C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\obj\Debug\Memo.baml
+C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\obj\Debug\ScheduleView.g.cs
+C:\Users\user\source\repos\DrawingBoard\2020-DGSW-Hackathon\Window\DGM_windows\DGM_windows\obj\Debug\ScheduleView.baml

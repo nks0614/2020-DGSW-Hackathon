@@ -86,6 +86,9 @@
     </Compile>
     <Compile Include="scheduleInfo.cs" />
     <Compile Include="GetSchoolMeals.cs" />
+    <Compile Include="ScheduleView.xaml.cs">
+      <DependentUpon>ScheduleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WeatherInfo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Memo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScheduleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

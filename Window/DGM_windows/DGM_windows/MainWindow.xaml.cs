@@ -67,32 +67,46 @@ namespace DGM_windows
 
             TodayDate.Content = DateTime.Now.Date.Year.ToString() + "년 " + DateTime.Now.Date.Month.ToString("00") + "월 " + DateTime.Now.Date.Day.ToString("00") + "일";
 
+            Set_Weather();
+
+            Set_Meals();
+
+            Set_Schedule();
+        }
+        public void Set_Weather()
+        {
             string[] getSchoolWeather = GetSchoolWeather.getWeather();
 
             WeatherTemp.Content = getSchoolWeather[0];
             WeatherContent.Content = getSchoolWeather[1];
 
-
-            string uriSource = string.Format("pack://application:,,,/DGM_windows;component/Image/{0}.png",getSchoolWeather[2]);
+            string uriSource = string.Format("pack://application:,,,/DGM_windows;component/Image/{0}.png", getSchoolWeather[2]);
             WeatherImage.Source = new ImageSourceConverter().ConvertFromString(uriSource) as ImageSource;
-
+        }
+        public void Set_Meals()
+        {
             string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
-
-            
 
             MealBreakfast.Text = getSchoolMeals[0];
             MealLunch.Text = getSchoolMeals[1];
             MealDinner.Text = getSchoolMeals[2];
+        }
 
-            string[] getSchoolSchedule = GetSchoolSchedule.getSchedule();
+        public void Set_Schedule()
+        {
+            string getSchoolSchedule = GetSchoolSchedule.getSchedule();
 
-            ScheduleContent.Text = getSchoolSchedule[0];
+            ScheduleContent.Text = getSchoolSchedule;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             IsMouseDown = true;
-            if (IsClose == 1) IsClose = 2;
+            if (IsClose == 1)
+            {
+                IsClose = 2;
+                Set_Schedule();
+            }
             else if (IsClose == 2) IsClose = 0;
             MoveStartLocation = GetMousePosition();
         }
@@ -182,6 +196,17 @@ namespace DGM_windows
         {
             Memo memo = new Memo();
             memo.ShowDialog();
+        }
+
+        private void MainWindows_Closed(object sender, EventArgs e)
+        {
+            notify.Dispose();
+        }
+
+        private void Schedule_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ScheduleView scheduleView = new ScheduleView();
+            scheduleView.ShowDialog();
         }
     }
 }

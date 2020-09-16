@@ -52,7 +52,6 @@ namespace DGM_windows
             connect.Close();
 
             this.Close();
-
         }
 
         private void DeleteButton_MouseDown(object sender, MouseButtonEventArgs e)
