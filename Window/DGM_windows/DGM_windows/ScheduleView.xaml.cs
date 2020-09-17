@@ -112,20 +112,29 @@ namespace DGM_windows
             memo.id.Content = name;
             SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
 
-            connect.Open();
-            using (SqlCommand command = new SqlCommand(string.Format("SELECT description FROM Schedule where id = '{0}'", name.Replace("id","")), connect))
-            using (SqlDataReader reader = command.ExecuteReader())
+            try
             {
-                reader.Read();
-                description = reader.GetString(0);
+                connect.Open();
+                using (SqlCommand command = new SqlCommand(string.Format("SELECT description FROM Schedule where id = '{0}'", name.Replace("id", "")), connect))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    reader.Read();
+                    description = reader.GetString(0);
+                }
+                connect.Close();
+
+
+                memo.SaveDate.SelectedDate = SelectDate.SelectedDate;
+
+                memo.SaveDescription.Text = description;
+                memo.Closed += Memo_Closed;
+                memo.ShowDialog();
             }
-            connect.Close();
+            catch(Exception ee)
+            {
+                MessageBox.Show(ee + " : code 1");
+            }
 
-            memo.SaveDate.SelectedDate = SelectDate.SelectedDate;
-
-            memo.SaveDescription.Text = description;
-            memo.Closed += Memo_Closed;
-            memo.ShowDialog();
         }
 
         private void Memo_Closed(object sender, EventArgs e)

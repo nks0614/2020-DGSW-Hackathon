@@ -40,31 +40,6 @@ namespace DGM_windows
         {
             InitializeComponent();
 
-
-            /*connect.Open();
-
-            /*SqlCommand cmd = new SqlCommand(@"INSERT INTO Schedule (id, time, description)
-            VALUES (3,'20030901','3')", connect);
-
-            cmd.ExecuteNonQuery();*/
-
-
-            /*using (SqlCommand command = new SqlCommand("SELECT description FROM Schedule", connect))
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    MealLunch.Content = string.Format("{0}", reader.GetString(0));
-                }
-            }*/
-
-            /*SqlCommand cmd = new SqlCommand("Delete From Schedule Where id = 1", connect);
-
-            cmd.ExecuteNonQuery();*/
-            
-
-            //connect.Close();
-
             TodayDate.Content = DateTime.Now.Date.Year.ToString() + "년 " + DateTime.Now.Date.Month.ToString("00") + "월 " + DateTime.Now.Date.Day.ToString("00") + "일";
 
             Set_Weather();
@@ -178,6 +153,7 @@ namespace DGM_windows
             }
             catch (Exception ee)
             {
+                System.Windows.MessageBox.Show(ee + " : code 7");
             }
         }
 

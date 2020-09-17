@@ -35,31 +35,52 @@ namespace DGM_windows
         {
             if (SaveButtonText.Content.ToString().Equals("저장"))
             {
-                connect.Open();
-                using (SqlCommand command = new SqlCommand("SELECT id FROM Schedule", connect))
-                using (SqlDataReader reader = command.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    connect.Open();
+                    using (SqlCommand command = new SqlCommand("SELECT id FROM Schedule", connect))
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        count = reader.GetInt32(0);
+                        while (reader.Read())
+                        {
+                            count = reader.GetInt32(0);
+                        }
                     }
+                    int id = count + 1;
+                    connect.Close();
                 }
-                int id = count + 1;
-                connect.Close();
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee + " : code 3");
+                }
 
-                connect.Open();
-                SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO Schedule (id, time, description) VALUES ({0},N'{1}',N'{2}')", id, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], SaveDescription.Text), connect);
-                cmd.ExecuteNonQuery();
-                connect.Close();
+                try
+                {
+                    connect.Open();
+                    SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO Schedule (id, time, description) VALUES ({0},N'{1}',N'{2}')", id, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], SaveDescription.Text), connect);
+                    cmd.ExecuteNonQuery();
+                    connect.Close();
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee + " : code 4");
+                }
 
                 this.Close();
             }
             else if(SaveButtonText.Content.ToString().Equals("수정"))
             {
-                connect.Open();
-                SqlCommand cmd = new SqlCommand(string.Format("UPDATE Schedule SET description = N'{0}', time = N'{1}' WHERE id = {2}", SaveDescription.Text, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], id.Content.ToString().Replace("id", "")), connect);
-                cmd.ExecuteNonQuery();
-                connect.Close();
+                try
+                {
+                    connect.Open();
+                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE Schedule SET description = N'{0}', time = N'{1}' WHERE id = {2}", SaveDescription.Text, SaveDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0], id.Content.ToString().Replace("id", "")), connect);
+                    cmd.ExecuteNonQuery();
+                    connect.Close();
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee + " : code 5");
+                }
 
                 this.Close();
             }
@@ -73,10 +94,17 @@ namespace DGM_windows
             }
             else if (SaveButtonText.Content.ToString().Equals("수정"))
             {
-                connect.Open();
-                SqlCommand cmd = new SqlCommand(string.Format("DELETE From Schedule WHERE id = {0}", id.Content.ToString().Replace("id", "")), connect);
-                cmd.ExecuteNonQuery();
-                connect.Close();
+                try
+                {
+                    connect.Open();
+                    SqlCommand cmd = new SqlCommand(string.Format("DELETE From Schedule WHERE id = {0}", id.Content.ToString().Replace("id", "")), connect);
+                    cmd.ExecuteNonQuery();
+                    connect.Close();
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee + " : code 6");
+                }
 
                 this.Close();
             }

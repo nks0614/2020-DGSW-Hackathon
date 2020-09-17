@@ -48,24 +48,31 @@ namespace DGM_windows
             }
             catch
             {
-                if(count == 0)
+                if (count == 0)
                 {
                     return "오늘의 일정이 없습니다.";
                 }
                 else
                 {
-                    string data;
+                    string data = "";
 
-                    connect.Open();
-                    using (SqlCommand command = new SqlCommand(string.Format("SELECT description FROM Schedule where time = '{0}'", MainWindow.Today), connect))
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    try
                     {
-                        reader.Read();
-                        data = reader.GetString(0);
+                        connect.Open();
+                        using (SqlCommand command = new SqlCommand(string.Format("SELECT description FROM Schedule where time = '{0}'", MainWindow.Today), connect))
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            reader.Read();
+                            data = reader.GetString(0);
+                        }
+                        connect.Close();
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee + " : code 2");
                     }
 
-                    connect.Close();
-                    if(count == 1)
+                    if (count == 1)
                     {
                         return data;
                     }
