@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DGM_windows"
         mc:Ignorable="d"
-        Title="ScheduleView" Height="600" Width="400"
+        Title="ScheduleView"
+        Name="ScheduleViews" Height="600" Width="400"
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Background="Transparent"
-        Topmost="True"  ShowInTaskbar="False" Closed="Schedule_Closed">
+        Topmost="True"  ShowInTaskbar="False" Closed="Schedule_Closed" MouseMove="Window_MouseMove">
     <Grid>
         <Rectangle Fill="Gray" Stroke="Black" Height="600" Width="400" RadiusX="10" RadiusY="10"/>
-        <Grid Margin="0 10 0 0" Width="380" Height="580" HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Rectangle Panel.ZIndex="2" Fill="Transparent" Stroke="Transparent" Height="600" Width="400" RadiusX="10" RadiusY="10" MouseDown="Rectangle_MouseDown" MouseUp="Rectangle_MouseUp"/>
+        <Grid Panel.ZIndex="3" Margin="0 10 0 0" Width="380" Height="580" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="10"/>
@@ -27,7 +29,7 @@
             </Grid>
             <Grid Grid.Row="2">
                 <ScrollViewer Background="Transparent" IsDeferredScrollingEnabled="True" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
-                    <StackPanel Name="ScheduleViewContent" Orientation="Vertical" Background="Transparent"/>
+                    <StackPanel Name="ScheduleViewContent" Orientation="Vertical" Background="Transparent" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp"/>
                 </ScrollViewer>
             </Grid>
             <Grid Grid.Row="4">

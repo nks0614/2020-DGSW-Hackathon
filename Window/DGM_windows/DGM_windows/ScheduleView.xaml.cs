@@ -21,6 +21,10 @@ namespace DGM_windows
     /// </summary>
     public partial class ScheduleView : Window
     {
+        public bool IsMouseDown = false;
+        static public int IsClose = 0;
+        System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
+        System.Windows.Point MoveStartLocation;
         public ScheduleView()
         {
             InitializeComponent();
@@ -145,6 +149,51 @@ namespace DGM_windows
         private void SelectDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             SetSchedule(SelectDate.SelectedDate.Value.ToString().Replace("-", "").Split(' ')[0]);
+        }
+        public System.Windows.Point GetMousePosition()
+        {
+            return Mouse.GetPosition(ScheduleViews);
+        }
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = true;
+            if (IsClose == 1)
+            {
+                IsClose = 2;
+            }
+            else if (IsClose == 2) IsClose = 0;
+            MoveStartLocation = GetMousePosition();
+        }
+
+        private void Rectangle_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = false;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = true;
+            if (IsClose == 1)
+            {
+                IsClose = 2;
+            }
+            else if (IsClose == 2) IsClose = 0;
+            MoveStartLocation = GetMousePosition();
+        }
+
+        private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = false;
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsMouseDown == true && IsClose == 0)
+            {
+                System.Windows.Point Location = GetMousePosition();
+                this.Left = currentLocation.X += (Location.X - MoveStartLocation.X);
+                this.Top = currentLocation.Y += (Location.Y - MoveStartLocation.Y);
+            }
         }
     }
 }
