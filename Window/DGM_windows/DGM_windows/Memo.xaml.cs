@@ -35,6 +35,7 @@ namespace DGM_windows
         {
             if (SaveButtonText.Content.ToString().Equals("저장"))
             {
+                int id = 0;
                 try
                 {
                     connect.Open();
@@ -46,7 +47,7 @@ namespace DGM_windows
                             count = reader.GetInt32(0);
                         }
                     }
-                    int id = count + 1;
+                    id = count + 1;
                     connect.Close();
                 }
                 catch (Exception ee)
@@ -112,6 +113,7 @@ namespace DGM_windows
         private void Memo_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             MainWindow.IsClose = 1;
+            ScheduleView.IsClose = 1;
         }
 
     }

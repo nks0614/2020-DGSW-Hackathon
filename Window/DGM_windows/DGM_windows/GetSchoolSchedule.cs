@@ -44,7 +44,14 @@ namespace DGM_windows
 
                 count += outPut.data.schedules.Count;
 
-                return string.Format("{0} +외 {1}개", outPut.data.schedules[0].name, count - 1);
+                if (count == 1)
+                {
+                    return string.Format("{0}", outPut.data.schedules[0].name);
+                }
+                else
+                {
+                    return string.Format("{0} +외 {1}개", outPut.data.schedules[0].name, count - 1);
+                }
             }
             catch
             {
