@@ -189,13 +189,13 @@ namespace DGM_windows
 
         private void LeftButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MealsSelectDate = MealsSelectDate.AddDays(1);
+            MealsSelectDate = MealsSelectDate.AddDays(-1);
             Set_Meals(MealsSelectDate.Date.Year.ToString() + MealsSelectDate.Date.Month.ToString("00") + MealsSelectDate.Date.Day.ToString("00"));
         }
 
         private void RightButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MealsSelectDate = MealsSelectDate.AddDays(-1);
+            MealsSelectDate = MealsSelectDate.AddDays(1);
             Set_Meals(MealsSelectDate.Date.Year.ToString() + MealsSelectDate.Date.Month.ToString("00") + MealsSelectDate.Date.Day.ToString("00"));
         }
     }
