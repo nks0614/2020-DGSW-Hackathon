@@ -21,6 +21,11 @@ namespace DGM_windows
     /// </summary>
     public partial class Memo : Window
     {
+        public bool IsMouseDown = false;
+        static public int IsClose = 0;
+        System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
+        System.Windows.Point MoveStartLocation;
+
         SqlConnection connect = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\DrawingBoard\\2020-DGSW-Hackathon\\Window\\DGM_windows\\DGM_windows\\Schedule.mdf;Integrated Security=True");
 
         int count;
@@ -116,5 +121,34 @@ namespace DGM_windows
             ScheduleView.IsClose = 1;
         }
 
+        private void Rectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = true;
+            if (IsClose == 1)
+            {
+                IsClose = 2;
+            }
+            else if (IsClose == 2) IsClose = 0;
+            MoveStartLocation = GetMousePosition();
+        }
+
+        private void Rectangle_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            IsMouseDown = false;
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (IsMouseDown == true && IsClose == 0)
+            {
+                System.Windows.Point Location = GetMousePosition();
+                this.Left = currentLocation.X += (Location.X - MoveStartLocation.X);
+                this.Top = currentLocation.Y += (Location.Y - MoveStartLocation.Y);
+            }
+        }
+        public System.Windows.Point GetMousePosition()
+        {
+            return Mouse.GetPosition(Memos);
+        }
     }
 }

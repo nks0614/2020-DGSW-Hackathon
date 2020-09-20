@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:DGM_windows"
         mc:Ignorable="d"
         Title="Memo" Height="200" Width="400"
+        Name="Memos"
         WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Background="Transparent"
-        Topmost="True"  ShowInTaskbar="False" Closing="Memo_Closing">
+        Topmost="True"  ShowInTaskbar="False" Closing="Memo_Closing" MouseMove="Window_MouseMove">
     <Grid>
-        <Rectangle Fill="Gray" Stroke="Black" Height="200" Width="400" RadiusX="10" RadiusY="10"/>
+        <Rectangle Fill="Gray" Stroke="Black" Height="200" Width="400" RadiusX="10" RadiusY="10" MouseDown="Rectangle_MouseDown" MouseUp="Rectangle_MouseUp"/>
         <Label Name="id" Content="0" Visibility="Hidden"/>
         <Grid Margin="0 10 0 0" Width="380" Height="180" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Grid.RowDefinitions>
