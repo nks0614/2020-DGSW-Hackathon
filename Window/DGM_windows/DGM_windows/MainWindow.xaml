@@ -46,31 +46,42 @@
         </StackPanel>
         <Image Panel.ZIndex="3" Source="./Image/add.png" Width="20" Height="20" Margin="906 121 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="Image_MouseDown"/>
         <Rectangle Panel.ZIndex="3" Margin="756 151 0 0" Width="168" Height="64" Fill="Transparent" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="Schedule_MouseDown"/>
+        
+        <Grid Panel.ZIndex="3" Height="100" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" MouseDown="LeftButton_MouseDown" Margin="25 370 0 0">
+            <Image Source="./Image/left-arrow.png" Width="30" Height="30"/>
+        </Grid>
 
-        <Grid Margin="0 311 0 0" Height="215" VerticalAlignment="Top">
+        <Grid Panel.ZIndex="3" Height="100" Width="50" VerticalAlignment="Top" HorizontalAlignment="Right" MouseDown="RightButton_MouseDown" Margin="0 370 25 0">
+            <Image Source="./Image/right-arrow.png" Width="30" Height="30"/>
+        </Grid>
+        
+        <Grid Margin="0 311 0 0" Height="215" Width="1000" VerticalAlignment="Top">
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid Grid.Column="1" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="아침" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <TextBox Name="MealBreakfast" Text="푸팟퐁 커리" TextWrapping="WrapWithOverflow" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
 
-            <Grid Grid.Column="1" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid Grid.Column="2" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="점심" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <TextBox Name="MealLunch" Text="푸팟퐁 커리" TextWrapping="WrapWithOverflow" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
 
-            <Grid Grid.Column="2" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Grid Grid.Column="3" Width="215" Height="215" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Rectangle Width="215" Height="215" Fill="Black" RadiusX="20" RadiusY="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <Label Content="저녁" HorizontalContentAlignment="Center" FontSize="23" Width="64" Foreground="White" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <TextBox Name="MealDinner" Text="푸팟퐁 커리" TextWrapping="WrapWithOverflow" Background="Transparent" BorderBrush="Transparent" HorizontalContentAlignment="Center" FontSize="15" Width="200" Foreground="White" FontWeight="Bold" Margin="0 46 0 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             </Grid>
+
         </Grid>
     </Grid>
 </Window>

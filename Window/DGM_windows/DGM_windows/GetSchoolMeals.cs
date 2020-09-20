@@ -12,9 +12,9 @@ namespace DGM_windows
         
         static string targetURL = string.Format("http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=D10&date={0}", MainWindow.Today);
 
-        public static string[] schoolMeals()
+        public static string[] schoolMeals(string SelectDate)
         {
-            
+            targetURL = string.Format("http://kyungwon-server.kro.kr:8080/meals?school_id=7240393&office_code=D10&date={0}", SelectDate);
 
             //1.WebClient 클래스 활용
             string webClientResult = callWebClient();

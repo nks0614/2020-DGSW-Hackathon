@@ -34,6 +34,8 @@ namespace DGM_windows
         System.Windows.Point currentLocation = new System.Windows.Point(0, 0);
         System.Windows.Point MoveStartLocation;
 
+        public DateTime MealsSelectDate = DateTime.Now;
+
         public static string Today = DateTime.Now.Date.Year.ToString() + DateTime.Now.Date.Month.ToString("00") + DateTime.Now.Date.Day.ToString("00");
 
         public MainWindow()
@@ -44,7 +46,7 @@ namespace DGM_windows
 
             Set_Weather();
 
-            Set_Meals();
+            Set_Meals(Today);
 
             Set_Schedule();
         }
@@ -58,9 +60,9 @@ namespace DGM_windows
             string uriSource = string.Format("pack://application:,,,/DGM_windows;component/Image/{0}.png", getSchoolWeather[2]);
             WeatherImage.Source = new ImageSourceConverter().ConvertFromString(uriSource) as ImageSource;
         }
-        public void Set_Meals()
+        public void Set_Meals(string SelectDate)
         {
-            string[] getSchoolMeals = GetSchoolMeals.schoolMeals();
+            string[] getSchoolMeals = GetSchoolMeals.schoolMeals(SelectDate);
 
             MealBreakfast.Text = getSchoolMeals[0];
             MealLunch.Text = getSchoolMeals[1];
@@ -183,6 +185,18 @@ namespace DGM_windows
         {
             ScheduleView scheduleView = new ScheduleView();
             scheduleView.ShowDialog();
+        }
+
+        private void LeftButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MealsSelectDate = MealsSelectDate.AddDays(1);
+            Set_Meals(MealsSelectDate.Date.Year.ToString() + MealsSelectDate.Date.Month.ToString("00") + MealsSelectDate.Date.Day.ToString("00"));
+        }
+
+        private void RightButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MealsSelectDate = MealsSelectDate.AddDays(-1);
+            Set_Meals(MealsSelectDate.Date.Year.ToString() + MealsSelectDate.Date.Month.ToString("00") + MealsSelectDate.Date.Day.ToString("00"));
         }
     }
 }
